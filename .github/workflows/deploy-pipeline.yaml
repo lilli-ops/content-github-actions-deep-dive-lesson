@@ -51,4 +51,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Create docs folder
-        run:
+        run: mkdir docs
+      - name: Convert MD to HTML
+        run: docker run --rm -v ${{ github.workspace }}:/workspace pandoc/core:2.9 -s /workspace/userguide.md -t html -o /workspace/docs/index.html
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: docs

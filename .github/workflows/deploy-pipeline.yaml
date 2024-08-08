@@ -54,7 +54,7 @@ documentation:
        - name: checout code 
          uses: actions/checkout@v2
        - name: create docs folder
-          run: mkdir docs
+         run: mkdir docs
        - name: convert md to html
          uses: docker://pandoc/core:2.9
          with:
